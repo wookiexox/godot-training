@@ -15,7 +15,6 @@ script = ExtResource("1_0xm2m")
 mob_scene = ExtResource("2_h2yge")
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(128, -64)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
