@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3lwqoqjv3a2v"]
+[gd_scene load_steps=10 format=3 uid="uid://c3lwqoqjv3a2v"]
 
+[ext_resource type="Script" uid="uid://qkpwyslmul6e" path="res://mob.gd" id="1_1qmh0"]
 [ext_resource type="Texture2D" uid="uid://bsbdbifuc2h4i" path="res://art/enemyFlyingAlt_1.png" id="1_b3mxk"]
 [ext_resource type="Texture2D" uid="uid://dmktwsepx2n63" path="res://art/enemyFlyingAlt_2.png" id="2_1qmh0"]
 [ext_resource type="Texture2D" uid="uid://bcwcaiksvpd7r" path="res://art/enemySwimming_1.png" id="3_gfurk"]
@@ -44,20 +45,24 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3mxk"]
-radius = 48.0
-height = 132.0
+radius = 36.0
+height = 100.0
 
 [node name="Mob" type="RigidBody2D" groups=["mobs"]]
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("1_1qmh0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_pcqmr")
 animation = &"walk"
-offset = Vector2(0.75, 0.75)
+offset = Vector2(0.5, 0.5)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_b3mxk")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

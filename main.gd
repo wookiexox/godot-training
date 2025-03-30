@@ -34,7 +34,7 @@ func new_game():
 	$Music.play()
 
 
-func _on_mob_timer_timeout() -> void:
+func _on_mob_timer_timeout():
 	var mob = mob_scene.instantiate()
 	
 	var mob_spawn_location = $MobPath/MobSpawnLocation
@@ -48,7 +48,7 @@ func _on_mob_timer_timeout() -> void:
 	mob.rotation = direction
 	
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
-	mob.linear_velocity - velocity.rotated(direction)
+	mob.linear_velocity = velocity.rotated(direction)
 	
 	add_child(mob)
 
